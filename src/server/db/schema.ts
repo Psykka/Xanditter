@@ -1,5 +1,4 @@
-// Example model schema from the Drizzle docs
-// https://orm.drizzle.team/docs/sql-schema-declaration
+// @ts-nocheck
 
 import { sql } from "drizzle-orm";
 import {
@@ -8,12 +7,6 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
-/**
- * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
- * database instance for multiple projects.
- *
- * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
- */
 export const createTable = pgTableCreator((name) => `xanditter_${name}`);
 
 export const users = createTable("users", {
@@ -34,6 +27,7 @@ export const followers = createTable("followers", {
     .notNull(),
 })
 
+// @ts-ignore
 export const posts: any = createTable("posts", {
   id: varchar("id").primaryKey(),
   parentId: varchar("parent_id").references(() => posts.id),

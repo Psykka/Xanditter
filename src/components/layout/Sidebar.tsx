@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, VStack, HStack, Image, Box } from '@chakra-ui/react'
+import { Button, Heading, VStack, HStack, Box } from '@chakra-ui/react'
 import { House, Bell, UserRound, Bolt, Feather } from 'lucide-react'
 import MenuLink from './MenuLink'
 
