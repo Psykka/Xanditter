@@ -1,7 +1,6 @@
-// @ts-nocheck
-
 import { sql } from "drizzle-orm";
 import {
+  AnyPgColumn,
   pgTableCreator,
   timestamp,
   varchar,
@@ -27,10 +26,9 @@ export const followers = createTable("followers", {
     .notNull(),
 })
 
-// @ts-ignore
-export const posts: any = createTable("posts", {
+export const posts = createTable("posts", {
   id: varchar("id").primaryKey(),
-  parentId: varchar("parent_id").references(() => posts.id),
+  parentId: varchar("parent_id").references((): AnyPgColumn => posts.id),
   threadId: varchar("thread_id"),
   userId: varchar("user_id").references(() => users.id),
   content: varchar("content"),
